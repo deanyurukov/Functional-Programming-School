@@ -21,7 +21,12 @@ execute :: (Num a) => (a -> a) -> a -> a
 execute command a = command a
 
 --05
-factorial :: (Num a, Ord a) => a -> a -> a -> a
-factorial n result i
-  | i <= n    = factorial n (result * i) (i + 1)
-  | otherwise = result
+factorial :: (Num a, Eq a) => a -> a
+factorial 0 = 1
+factorial n = n * (factorial (n-1))
+
+--06
+fibonacci :: (Num a, Eq a) => a -> a
+fibonacci 1 = 1
+fibonacci 2 = 1
+fibonacci n = (fibonacci (n - 1) + fibonacci (n - 2))
